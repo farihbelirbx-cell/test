@@ -3,7 +3,6 @@ class Api::RoomsController < ApplicationController
   def index
     user_id = params[:user_id].to_i
 
-    # ⬇️ FIX: Query semua data sekaligus (1 query aja!)
     rooms = Room
       .where("user1_id = ? OR user2_id = ?", user_id, user_id)
       .includes(:messages)
