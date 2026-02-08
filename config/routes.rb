@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index]
     resources :messages, only: [:index, :create]
     resources :chats, only: [:index]
-    resources :users, only: [:index, :create, :show]
+    resources :users, only: [:index, :create, :show] do
+      collection do
+        post :login  
+      end
+    end
   end
 end
