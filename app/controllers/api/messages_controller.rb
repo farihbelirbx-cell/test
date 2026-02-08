@@ -20,6 +20,7 @@ class Api::MessagesController < ApplicationController
     )
 
     if message.save
+      # 1️⃣ Broadcast ke room channel (untuk realtime chat)
       ActionCable.server.broadcast(
         "private_room_#{room.id}",
         {
@@ -30,6 +31,16 @@ class Api::MessagesController < ApplicationController
           created_at: message.created_at
         }
       )
+
+      [message_params[:sender_id], message_params[:receiver_id]].each do |user_id|
+        ActionCable.server.broadcast(
+          "user_#{user_id}",
+          {
+            type: 'room_update',
+            room_id: room.id
+          }
+        )
+      end
 
       render json: { room_id: room.id, message: message }, status: :created
     else
