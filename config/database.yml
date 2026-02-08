@@ -1,10 +1,9 @@
-# config/database.yml
-
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  prepared_statements: false
 
 development:
   <<: *default
@@ -17,8 +16,8 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  # Untuk production, tambahkan config pool & timeout yang lebih besar
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
   timeout: 10000
-  # SSL required untuk Supabase production
   sslmode: require
+  prepared_statements: false
+  statement_limit: 1000
