@@ -172,4 +172,4 @@ MIT
 
 ## 👨‍💻 Author
 
-Your Name
+Muhamad Ramadhifan Baiqi
