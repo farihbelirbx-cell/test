@@ -89,6 +89,7 @@ Rails.application.configure do
 
   config.action_cable.allowed_request_origins = [
     'http://localhost:3001',
-    'https://test-2-production-e1d8.up.railway.app'
+    'https://test-2-production-e1d8.up.railway.app',
+    'https://test-2-production-0be2.up.railway.app'
   ]
 end
