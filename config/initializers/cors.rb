@@ -2,7 +2,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins(
       'http://localhost:3001',
-      'https://test-2-production-e1d8.up.railway.app'
+      'https://test-2-production-e1d8.up.railway.app',
+      'https://test-2-production-0be2.up.railway.app'
     )
 
     resource '*',
